@@ -1,7 +1,7 @@
 
 from functools import wraps
 from address_book import *
-
+import pickle
 
 def input_error(func):
     @wraps(func)
@@ -89,3 +89,14 @@ def birthdays(book):
     for item in book.get_upcoming_birthdays():
         print(item)
 
+def save_data(book, filename="addressbook.pkl"):
+    with open(filename, "wb") as f:
+        pickle.dump(book, f)
+
+@input_error
+def load_data(filename="addressbook.pkl"):
+    try:
+        with open(filename, "rb") as f:
+            return pickle.load(f)
+    except FileNotFoundError:
+        return AddressBook()

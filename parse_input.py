@@ -1,7 +1,7 @@
 from handler_command import *
 from address_book import *
 
-book = AddressBook()
+book = load_data()
 
 @input_error
 def parse_input(input_command):
@@ -15,7 +15,8 @@ def parse_input(input_command):
         print("Введіть одну з команд: hello, add, change, phone, all, exit or close")
     
     elif cmd in ["close", "exit"]:
-        print("Ви залишаєте додаток! \nГарного дня!")
+        save_data(book)
+        print("Ви залишаєте додаток! Ваші данні збережено! \nГарного дня!")
         return exit()
 
     elif cmd == "add":
