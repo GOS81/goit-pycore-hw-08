@@ -70,7 +70,6 @@ def add_birthday(args, book):
     else:
         raise ValueError ("Введіть всі необхідні данні: ім'я, дату народження")
 
-
 @input_error
 def show_birthday(args, book):
     if len(args) >= 1:
